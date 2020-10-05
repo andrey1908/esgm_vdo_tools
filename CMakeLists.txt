@@ -204,3 +204,7 @@ include_directories(
 catkin_install_python(PROGRAMS scripts/save_depth.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
+
+catkin_install_python(PROGRAMS scripts/publish_images.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)

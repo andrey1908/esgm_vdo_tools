@@ -33,8 +33,10 @@ class VDO_Depth_Saver:
 if __name__ == '__main__':
     rospy.init_node('save_depth_vdo', anonymous=True)
     out_folder = rospy.get_param('~out_folder')
-    bf = rospy.get_param('~bf')
-    DepthMapFactor = rospy.get_param('~DepthMapFactor')
+    calib_file = rospy.get_param('~calib_file')
+    calib = cv2.FileStorage(calib_file, cv2.FILE_STORAGE_READ)
+    bf = calib.getNode('Camera.bf').real()
+    DepthMapFactor = calib.getNode('DepthMapFactor').real()
     depth_saver = VDO_Depth_Saver(out_folder, bf, DepthMapFactor)
     rospy.spin()
 
